@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aesthetic Download List</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #0f0f0f;
+      color: white;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 2.5rem;
+      color: #00ffd5;
+    }
+
+    .list-container {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    .item {
+      display: flex;
+      align-items: center;
+      background: linear-gradient(135deg, #111, #1a1a1a);
+      border-radius: 20px;
+      overflow: hidden;
+      clip-path: polygon(0 0, 90% 0, 100% 50%, 90% 100%, 0 100%);
+      transition: transform 0.3s ease;
+    }
+
+    .item:hover {
+      transform: scale(1.02);
+    }
+
+    .item img {
+      width: 180px;
+      height: 180px;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    .item-content {
+      padding: 20px;
+      flex: 1;
+    }
+
+    .item-title {
+      font-size: 1.4rem;
+      color: #00ffd5;
+      margin-bottom: 10px;
+    }
+
+    .item-desc {
+      font-size: 0.95rem;
+      color: #ccc;
+      margin-bottom: 15px;
+    }
+
+    .download-btn {
+      background: #00ffd5;
+      color: #0f0f0f;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 50px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .download-btn:hover {
+      background: #00bfa5;
+    }
+
+    @media (max-width: 700px) {
+      .item {
+        flex-direction: column;
+        clip-path: none;
+        border-radius: 20px;
+      }
+      .item img {
+        width: 100%;
+        height: 200px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>The Legendary List</h1>
+  <div class="list-container" id="list"></div>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 800, once: true });
+
+    const data = [
+      {
+        img: "https://picsum.photos/300/200?random=1",
+        title: "Daily Goals",
+        desc: "An app that can save your goals for the day, if failed it becames red.",
+        link: "#"
+      },
+      
+    ];
+
+    const container = document.getElementById("list");
+
+    data.forEach(item => {
+      container.innerHTML += `
+        <div class="item" data-aos="fade-up">
+          <img src="${item.img}" alt="${item.title}">
+          <div class="item-content">
+            <div class="item-title">${item.title}</div>
+            <div class="item-desc">${item.desc}</div>
+            <a href="${item.link}">
+              <button class="download-btn">Download</button>
+            </a>
+          </div>
+        </div>
+      `;
+    });
+  </script>
+</body>
+</html>
